@@ -1,0 +1,76 @@
+{
+    "name": "African Elephant",
+    "latinName": "Loxodonta Africana",
+    "status": "endangered",
+    "facts": [
+        {
+            "key": "Class",
+            "value": "Mammal"
+        },
+        {
+            "key": "Countries Found",
+            "value": [
+                "Zambia",
+                "Kenya",
+                "Congo"
+            ]
+        },
+        {
+            "key": "Weight",
+            "value": "2000kg (about 25 people)"
+        },
+        {
+            "key": "Height",
+            "value": "3m (about 2 people)"
+        },
+        {
+            "key": "Diet",
+            "value": "Grass"
+        },
+        {
+            "key": "Habitat",
+            "value": "Grassland"
+        },
+        {
+            "key": "Speed",
+            "value": "30km/h"
+        },
+        {
+            "key": "Did you know?",
+            "value": "Elephants are scared of mice."
+        }
+    ],
+    "conservationFacts": [
+        {
+            "key": "Change in range",
+            "value": "1000km to 200km"
+        },
+        {
+            "key": "Threats",
+            "value": [
+                "poaching"
+            ]
+        },
+        {
+            "key": "Population",
+            "value": 1000
+        },
+        {
+            "key": "What actions are being taken?",
+            "value": [
+                "Rangers",
+                "Raising Awareness"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "key": "Find out more",
+            "value": "http://www.example.com"
+        },
+        {
+            "key": "Donate",
+            "value": "http://example.com"
+        }
+    ]
+}

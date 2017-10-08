@@ -68242,7 +68242,8 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
         textAlign: 'center',
         color: _colors.colors.black,
         lineHeight: '10vh',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)'
     },
 
     sheetTitle_secondary: {

@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
         color: colors.black,
         lineHeight: '10vh',
         cursor: 'pointer',
+        '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)',
     },
 
     sheetTitle_secondary: {

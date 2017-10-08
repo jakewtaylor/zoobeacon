@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     },
 
     sheet_vulnerable: {
-        background: '#DCB403',
+        background: '#E4BB03',
     },
 
     sheetTitle: {
@@ -38,11 +38,16 @@ export const styles = StyleSheet.create({
     sheetTitle_secondary: {
         color: colors.white,
     },
+
+    sheetTitle_secondary_inactive: {
+        fontSize: '1.4vw',
+        lineHeight: '8vh',
+    },
 });
 
 export const sheetStyles = (visible, secondary) => secondary ? {
-    bottom: visible ? '10vh' : '-59vh',
-    margin: visible ? '0 3vh' : '0 6vh',
+    bottom: visible ? '10vh' : '-60vh',
+    margin: visible ? '0 3vh' : '0 20vh',
 } : {
     bottom: visible ? 0 : '-77vh',
     margin: visible ? '0 3vh' : '0 5vh',

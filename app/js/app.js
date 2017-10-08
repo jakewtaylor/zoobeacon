@@ -68100,7 +68100,7 @@ var Sheet = exports.Sheet = function Sheet(_ref) {
         _react2.default.createElement(
             'h2',
             {
-                className: (0, _aphrodite.css)(_styles.styles.sheetTitle, secondary ? _styles.styles.sheetTitle_secondary : null),
+                className: (0, _aphrodite.css)(_styles.styles.sheetTitle, secondary ? _styles.styles.sheetTitle_secondary : null, secondary && !visible ? _styles.styles.sheetTitle_secondary_inactive : null),
                 onClick: toggle
             },
             title
@@ -68235,7 +68235,7 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
     },
 
     sheet_vulnerable: {
-        background: '#DCB403'
+        background: '#E4BB03'
     },
 
     sheetTitle: {
@@ -68247,13 +68247,18 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
 
     sheetTitle_secondary: {
         color: _colors.colors.white
+    },
+
+    sheetTitle_secondary_inactive: {
+        fontSize: '1.4vw',
+        lineHeight: '8vh'
     }
 });
 
 var sheetStyles = exports.sheetStyles = function sheetStyles(visible, secondary) {
     return secondary ? {
-        bottom: visible ? '10vh' : '-59vh',
-        margin: visible ? '0 3vh' : '0 6vh'
+        bottom: visible ? '10vh' : '-60vh',
+        margin: visible ? '0 3vh' : '0 20vh'
     } : {
         bottom: visible ? 0 : '-77vh',
         margin: visible ? '0 3vh' : '0 5vh'

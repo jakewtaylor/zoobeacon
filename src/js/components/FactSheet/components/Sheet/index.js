@@ -26,6 +26,7 @@ export const Sheet = ({
                 className={css(
                     styles.sheetTitle,
                     secondary ? styles.sheetTitle_secondary : null,
+                    secondary && !visible ? styles.sheetTitle_secondary_inactive : null,
                 )}
                 onClick={toggle}
             >

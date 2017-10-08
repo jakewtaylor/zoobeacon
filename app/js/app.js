@@ -68258,7 +68258,7 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
 var sheetStyles = exports.sheetStyles = function sheetStyles(visible, secondary) {
     return secondary ? {
         bottom: visible ? '10vh' : '-60vh',
-        margin: visible ? '0 3vh' : '0 20vh'
+        margin: visible ? '0 3vh' : '0 10vh'
     } : {
         bottom: visible ? 0 : '-77vh',
         margin: visible ? '0 3vh' : '0 5vh'

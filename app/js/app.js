@@ -21972,7 +21972,7 @@ var Root = function (_Component) {
             // fetch(apiUrl, { mode: 'no-cors' })
 
             fetch('./sampledata.json').then(function (res) {
-                return res.text();
+                return res.json();
             }).then(function (data) {
                 _this2.setState({
                     loaded: true,

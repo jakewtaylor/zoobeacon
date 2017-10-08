@@ -13,7 +13,7 @@ class Root extends Component {
         const { apiUrl } = this.props;
         // fetch(apiUrl, { mode: 'no-cors' })
         fetch('./sampledata.json')
-            .then(res => res.text())
+            .then(res => res.json())
             .then((data) => {
                 this.setState({
                     loaded: true,

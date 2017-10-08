@@ -23764,7 +23764,7 @@ var ThreeD = function (_Component) {
                 return function (geometry, materials) {
                     var material = new Three.MultiMaterial(materials);
                     var mesh = new Three.Mesh(geometry, material);
-                    mesh.scale.set(0.4, 0.4, 0.4);
+                    mesh.scale.set(0.5, 0.5, 0.5);
                     mesh.position.y += 1;
                     mesh.material[0].color.set(colors[type]);
                     mesh.material[0].shininess = 0;

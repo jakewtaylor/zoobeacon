@@ -68,7 +68,7 @@ class ThreeD extends Component {
         const renderer = type => (geometry, materials) => {
             const material = new Three.MultiMaterial(materials);
             const mesh = new Three.Mesh(geometry, material);
-            mesh.scale.set(0.4, 0.4, 0.4);
+            mesh.scale.set(0.5, 0.5, 0.5);
             mesh.position.y += 1;
             mesh.material[0].color.set(colors[type]);
             mesh.material[0].shininess = 0;

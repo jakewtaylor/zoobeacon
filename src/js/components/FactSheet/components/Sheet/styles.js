@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     
     sheet_secondary: {
         borderRadius: '5px',
-        height: '84vh',
+        height: '76vh',
         color: colors.white,
     },
 
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
 });
 
 export const sheetStyles = (visible, secondary) => secondary ? {
-    bottom: visible ? '10vh' : '-67vh',
+    bottom: visible ? '10vh' : '-59vh',
     margin: visible ? '0 3vh' : '0 6vh',
 } : {
     bottom: visible ? 0 : '-77vh',

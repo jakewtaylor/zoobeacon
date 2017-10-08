@@ -23746,8 +23746,15 @@ var ThreeD = function (_Component) {
     }, {
         key: 'loadElephant',
         value: function loadElephant() {
-            var loader = new Three.JSONLoader();
-            loader.load('./elephant.json', this.renderElephant);
+            var _this3 = this;
+
+            var loader = new Three.ObjectLoader();
+            loader.load('./elephant2.json', function (obj) {
+                obj.scale.set(0.4, 0.4, 0.4);
+                obj.position.y += 1;
+                _this3.animal = obj;
+                _this3.scene.add(_this3.animal);
+            });
         }
     }, {
         key: 'renderLights',

@@ -57,8 +57,13 @@ class ThreeD extends Component {
 
 
     loadElephant () {
-        const loader = new Three.JSONLoader();
-        loader.load('./elephant.json', this.renderElephant);
+        const loader = new Three.ObjectLoader();
+        loader.load('./elephant2.json', (obj) => {
+            obj.scale.set(0.4, 0.4, 0.4);
+            obj.position.y += 1;
+            this.animal = obj;
+            this.scene.add(this.animal);
+        });
     }
 
     renderElephant = (geometry, materials) => {

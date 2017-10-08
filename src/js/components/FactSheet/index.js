@@ -5,16 +5,21 @@ import ThreeD from '../ThreeD';
 
 import * as funcs from './funcs';
 
+import { Sheet } from './components/Sheet';
+
 import { styles } from './styles';
 
 class FactSheet extends Component {
-    state = { visible: false }
+    state = {
+        sheetOneVisible: false,
+        sheetTwoVisible: false,
+    }
 
-    toggleSheet = () => this.setState(
+    handleToggleSheet = name => this.setState(
         prev => ({
-            visible: !prev.visible,
+            [name]: !prev[name],
         }),
-    );
+    )
 
     render () {
         const {
@@ -22,16 +27,13 @@ class FactSheet extends Component {
             latinName,
             status,
             facts,
+            conservationFacts,
         } = this.props;
 
         const {
-            visible,
+            sheetOneVisible,
+            sheetTwoVisible,
         } = this.state;
-
-        const endangeredStyles = css(
-            styles.threat,
-            styles[`threat_${status}`],
-        );
 
         return (
             <div className={css(styles.container)}>
@@ -40,32 +42,23 @@ class FactSheet extends Component {
                     <p className={css(styles.subtitle)}>{latinName}</p>
 
                     <ThreeD />
-
-                    <div className={endangeredStyles}>
-                        <h2>{funcs.status(status)}</h2>
-                    </div>
                 </div>
+                
+                <Sheet
+                    secondary
+                    status={status}
+                    title={funcs.status(status)}
+                    toggle={() => this.handleToggleSheet('sheetTwoVisible')}
+                    visible={sheetTwoVisible}
+                    facts={conservationFacts}
+                />
 
                 <Sheet
-                    visible={visible}
+                    title="Facts"
+                    toggle={() => this.handleToggleSheet('sheetOneVisible')}
+                    visible={sheetOneVisible}
                     facts={facts}
                 />
-                {/*
-                <div
-                    className={css(styles.sheet)}
-                    style={funcs.sheetStyles(visible)}
-                >
-                    <h2
-                        className={css(styles.sheetTitle)}
-                        onClick={this.toggleSheet}
-                    >
-                        Facts
-                    </h2>
-
-                    <div>
-                    </div>
-                </div>
-                */}
             </div>
         );
     }

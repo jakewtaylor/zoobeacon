@@ -1,7 +1,7 @@
 {
     "name": "African Elephant",
     "latinName": "Loxodonta Africana",
-    "status": "endangered",
+    "status": "vulnerable",
     "facts": [
         {
             "key": "Class",
@@ -37,7 +37,7 @@
         },
         {
             "key": "Did you know?",
-            "value": "Elephants are scared of mice."
+            "value": "Elephants are firm believers in the 'Snitches get stitches' ideology."
         }
     ],
     "conservationFacts": [

@@ -1,0 +1,13 @@
+{
+    "name": "jakewtaylor/zoobeacon",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Jake Taylor",
+            "email": "me@jaketaylor.co"
+        }
+    ],
+    "require": {
+        "mikecao/flight": "^1.3"
+    }
+}

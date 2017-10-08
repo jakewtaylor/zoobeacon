@@ -14,18 +14,18 @@ export const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.darkBlue,
+        backgroundColor: colors.primary,
     },
 
     loader: {
         width: '10vw',
         height: '10vw',
-        border: `5px solid ${colors.white}`,
-        borderRight: '5px solid transparent',
+        border: `1vw solid ${colors.white}`,
+        borderRight: '1vw solid transparent',
         borderRadius: '50%',
 
         animationName: [spinner],
-        animationDuration: '1s',
+        animationDuration: '1.5s',
         animationIterationCount: 'infinite',
         animationTimingFunction: 'linear',
     },

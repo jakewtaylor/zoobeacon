@@ -10,7 +10,9 @@ class Root extends Component {
     };
 
     componentDidMount () {
-        fetch('/sampledata.json')
+        const { apiUrl } = this.props;
+        //fetch(apiUrl)
+        fetch('./sampledata.json')
             .then(res => res.json())
             .then((data) => {
                 this.setState({

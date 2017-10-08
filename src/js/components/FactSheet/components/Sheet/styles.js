@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     },
 
     sheetTitle_secondary_inactive: {
-        fontSize: '1.4vw',
+        fontSize: '2.4vh',
         lineHeight: '8vh',
     },
 });

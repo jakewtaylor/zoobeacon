@@ -21969,17 +21969,17 @@ var Root = function (_Component) {
             var _this2 = this;
 
             var apiUrl = this.props.apiUrl;
-            //fetch(apiUrl)
+            // fetch(apiUrl, { mode: 'no-cors' })
 
             fetch('./sampledata.json').then(function (res) {
-                return res.json();
+                return res.text();
             }).then(function (data) {
                 _this2.setState({
                     loaded: true,
                     data: data
                 });
             }).catch(function (err) {
-                return console.dir(err);
+                return console.error(err);
             });
         }
     }, {
@@ -23677,9 +23677,17 @@ var ThreeD = function (_Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ThreeD.__proto__ || Object.getPrototypeOf(ThreeD)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             element: false
+        }, _this.renderElephant = function (geometry, materials) {
+            var material = new Three.MeshFaceMaterial(materials);
+            _this.animal = new Three.Mesh(geometry, material);
+            _this.animal.scale.set(0.4, 0.4, 0.4);
+            _this.animal.position.y += 1;
+            _this.scene.add(_this.animal);
         }, _this.animate = function () {
             requestAnimationFrame(_this.animate);
-            _this.cube.rotation.y += 0.01;
+            if (_this.animal) {
+                _this.animal.rotation.y += 0.01;
+            }
             _this.renderer.render(_this.scene, _this.camera);
         }, _this.render = function () {
             return _react2.default.createElement('div', {
@@ -23713,11 +23721,12 @@ var ThreeD = function (_Component) {
 
                 _this2.canvas.appendChild(_this2.renderer.domElement);
 
-                _this2.camera.position.set(0, 5, -5);
-                _this2.camera.lookAt(new Three.Vector3(0, 5));
+                _this2.camera.position.set(0, 1, -5);
+                _this2.camera.lookAt(new Three.Vector3(0, 1));
 
                 _this2.renderLights();
-                _this2.renderCube();
+                _this2.loadElephant();
+                _this2.renderElephant();
 
                 _this2.animate();
             }, 1);
@@ -23735,18 +23744,10 @@ var ThreeD = function (_Component) {
             this.renderer.setClearColor(0x000000, 0);
         }
     }, {
-        key: 'renderCube',
-        value: function renderCube() {
-            var geometry = new Three.BoxGeometry(2, 2, 2);
-            var material = new Three.MeshPhongMaterial({
-                color: 0xffffff,
-                dithering: true
-            });
-
-            this.cube = new Three.Mesh(geometry, material);
-            this.cube.castShadow = true;
-            this.scene.add(this.cube);
-            this.cube.position.y = 5;
+        key: 'loadElephant',
+        value: function loadElephant() {
+            var loader = new Three.JSONLoader();
+            loader.load('./elephant.json', this.renderElephant);
         }
     }, {
         key: 'renderLights',
@@ -68153,7 +68154,7 @@ var Facts = exports.Facts = function Facts(_ref) {
                 ),
                 _react2.default.createElement(
                     'p',
-                    null,
+                    { className: (0, _aphrodite.css)(_styles.styles.value) },
                     Array.isArray(value) ? value.join(', ') : value
                 )
             );
@@ -68190,7 +68191,8 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
     },
 
     label: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: '0.8em'
     },
 
     value: {}
@@ -68221,7 +68223,7 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
         left: 0,
         right: 0,
         transition: 'all .2s',
-        boxShadow: '0 3px 15px rgba(54, 52, 57, 0.4)'
+        boxShadow: '0 5px 30px -5px rgba(54, 52, 57, 0.8)'
     },
 
     sheet_secondary: {

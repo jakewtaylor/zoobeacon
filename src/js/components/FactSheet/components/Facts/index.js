@@ -8,7 +8,7 @@ export const Facts = ({ facts }) => (
         {facts.map(({ key, value }) => (
             <div key={key} className={css(styles.fact)}>
                 <p className={css(styles.label)}>{key}</p>
-                <p>{
+                <p className={css(styles.value)}>{
                     Array.isArray(value)
                         ? value.join(', ')
                         : value

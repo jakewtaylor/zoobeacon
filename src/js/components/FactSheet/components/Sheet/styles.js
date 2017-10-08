@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         left: 0,
         right: 0,
         transition: 'all .2s',
-        boxShadow: '0 3px 15px rgba(54, 52, 57, 0.4)',
+        boxShadow: '0 5px 30px -5px rgba(54, 52, 57, 0.8)',
     },
     
     sheet_secondary: {

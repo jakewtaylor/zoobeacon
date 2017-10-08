@@ -33,11 +33,12 @@ class ThreeD extends Component {
 
             this.canvas.appendChild(this.renderer.domElement);
 
-            this.camera.position.set(0, 5, -5);
-            this.camera.lookAt(new Three.Vector3(0, 5));
+            this.camera.position.set(0, 1, -5);
+            this.camera.lookAt(new Three.Vector3(0, 1));
 
             this.renderLights();
-            this.renderCube();
+            this.loadElephant();
+            this.renderElephant();
 
             this.animate();
         }, 1);
@@ -54,18 +55,18 @@ class ThreeD extends Component {
         this.renderer.setClearColor(0x000000, 0);
     }
 
-    renderCube () {
-        const geometry = new Three.BoxGeometry(2, 2, 2);
-        const material = new Three.MeshPhongMaterial({
-            color: 0xffffff,
-            dithering: true,
-        });
 
-        this.cube = new Three.Mesh(geometry, material);
-        this.cube.castShadow = true;
-        this.scene.add(this.cube);
-        this.cube.position.y = 5;
-        
+    loadElephant () {
+        const loader = new Three.JSONLoader();
+        loader.load('./elephant.json', this.renderElephant);
+    }
+
+    renderElephant = (geometry, materials) => {
+        const material = new Three.MeshFaceMaterial(materials);
+        this.animal = new Three.Mesh(geometry, material);
+        this.animal.scale.set(0.4, 0.4, 0.4);
+        this.animal.position.y += 1;
+        this.scene.add(this.animal);
     }
 
     renderLights () {
@@ -90,7 +91,9 @@ class ThreeD extends Component {
 
     animate = () => {
         requestAnimationFrame(this.animate);
-        this.cube.rotation.y += 0.01;
+        if (this.animal) {
+            this.animal.rotation.y += 0.01;
+        }
         this.renderer.render(this.scene, this.camera);
     }
 

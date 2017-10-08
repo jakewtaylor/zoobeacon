@@ -8,8 +8,4 @@ class AnimalController {
             'api_url' => $animalUrl,
         ]);
     }
-
-    public static function apiProxy (string $animal) {
-        return Animal::get($animal);
-    }
 }

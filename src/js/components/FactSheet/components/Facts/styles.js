@@ -16,9 +16,9 @@ export const styles = StyleSheet.create({
 
     label: {
         fontWeight: 'bold',
+        fontSize: '0.8em',
     },
 
     value: {
-
     },
 });

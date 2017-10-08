@@ -26,7 +26,15 @@
             html, body, body > div {
                 font-family: 'Varela Round', sans-serif;
                 height: 100%;
+            }
+
+            body > div {
                 overflow: hidden;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
             }
         </style>
     </body>

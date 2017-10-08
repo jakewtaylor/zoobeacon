@@ -68243,11 +68243,28 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
         color: _colors.colors.black,
         lineHeight: '10vh',
         cursor: 'pointer',
-        '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)'
+        '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)',
+        display: 'block',
+        position: 'relative',
+
+        ':after': {
+            content: '""',
+            position: 'absolute',
+            top: '75%',
+            height: 3,
+            width: '8%',
+            left: '50%',
+            background: _colors.colors.black,
+            transform: 'translateX(-50%)'
+        }
     },
 
     sheetTitle_secondary: {
-        color: _colors.colors.white
+        color: _colors.colors.white,
+
+        ':after': {
+            background: _colors.colors.white
+        }
     },
 
     sheetTitle_secondary_inactive: {

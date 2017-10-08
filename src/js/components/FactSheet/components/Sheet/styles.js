@@ -34,10 +34,27 @@ export const styles = StyleSheet.create({
         lineHeight: '10vh',
         cursor: 'pointer',
         '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)',
+        display: 'block',
+        position: 'relative',
+        
+        ':after': {
+            content: '""',
+            position: 'absolute',
+            top: '75%',
+            height: 3,
+            width: '8%',
+            left: '50%',
+            background: colors.black,
+            transform: 'translateX(-50%)',
+        },
     },
 
     sheetTitle_secondary: {
         color: colors.white,
+
+        ':after': {
+            background: colors.white,
+        },
     },
 
     sheetTitle_secondary_inactive: {

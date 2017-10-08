@@ -2,6 +2,7 @@ import React from 'react';
 import { css, StyleSheet } from 'aphrodite';
 
 import { Facts } from '../Facts';
+import { Links } from '../Links';
 
 import { styles, sheetStyles } from './styles';
 
@@ -11,6 +12,7 @@ export const Sheet = ({
     title,
     visible,
     facts,
+    links,
     toggle,
 }) => {
     return (
@@ -34,6 +36,9 @@ export const Sheet = ({
             </h2>
 
             <Facts facts={facts} />
+            {links ? (
+                <Links links={links} />
+            ) : null}
         </div>
     );
 };

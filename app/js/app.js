@@ -22075,7 +22075,8 @@ var FactSheet = function (_Component) {
                 latinName = _props.latinName,
                 status = _props.status,
                 facts = _props.facts,
-                conservationFacts = _props.conservationFacts;
+                conservationFacts = _props.conservationFacts,
+                links = _props.links;
             var _state = this.state,
                 sheetOneVisible = _state.sheetOneVisible,
                 sheetTwoVisible = _state.sheetTwoVisible;
@@ -22115,7 +22116,8 @@ var FactSheet = function (_Component) {
                         return _this2.handleToggleSheet('sheetOneVisible');
                     },
                     visible: sheetOneVisible,
-                    facts: facts
+                    facts: facts,
+                    links: links
                 })
             );
         }
@@ -23685,8 +23687,10 @@ var ThreeD = function (_Component) {
             _this.scene.add(_this.animal);
         }, _this.animate = function () {
             requestAnimationFrame(_this.animate);
-            if (_this.animal) {
-                _this.animal.rotation.y += 0.01;
+            if (_this.body && _this.eyes && _this.tusks) {
+                _this.body.rotation.y += 0.01;
+                _this.eyes.rotation.y += 0.01;
+                _this.tusks.rotation.y += 0.01;
             }
             _this.renderer.render(_this.scene, _this.camera);
         }, _this.render = function () {
@@ -23748,13 +23752,30 @@ var ThreeD = function (_Component) {
         value: function loadElephant() {
             var _this3 = this;
 
-            var loader = new Three.ObjectLoader();
-            loader.load('./elephant2.json', function (obj) {
-                obj.scale.set(0.4, 0.4, 0.4);
-                obj.position.y += 1;
-                _this3.animal = obj;
-                _this3.scene.add(_this3.animal);
-            });
+            var loader = new Three.JSONLoader();
+
+            var colors = {
+                body: 0x7a7a7a,
+                eyes: 0x0000ff,
+                tusks: 0xffffff
+            };
+
+            var renderer = function renderer(type) {
+                return function (geometry, materials) {
+                    var material = new Three.MultiMaterial(materials);
+                    var mesh = new Three.Mesh(geometry, material);
+                    mesh.scale.set(0.4, 0.4, 0.4);
+                    mesh.position.y += 1;
+                    mesh.material[0].color.set(colors[type]);
+                    mesh.material[0].shininess = 0;
+                    _this3[type] = mesh;
+                    _this3.scene.add(_this3[type]);
+                };
+            };
+
+            loader.load('./elephant/body.json', renderer('body'));
+            loader.load('./elephant/eyes.json', renderer('eyes'));
+            loader.load('./elephant/tusks.json', renderer('tusks'));
         }
     }, {
         key: 'renderLights',
@@ -68087,6 +68108,8 @@ var _aphrodite = __webpack_require__(1);
 
 var _Facts = __webpack_require__(72);
 
+var _Links = __webpack_require__(78);
+
 var _styles = __webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -68097,6 +68120,7 @@ var Sheet = exports.Sheet = function Sheet(_ref) {
         title = _ref.title,
         visible = _ref.visible,
         facts = _ref.facts,
+        links = _ref.links,
         toggle = _ref.toggle;
 
     return _react2.default.createElement(
@@ -68113,7 +68137,8 @@ var Sheet = exports.Sheet = function Sheet(_ref) {
             },
             title
         ),
-        _react2.default.createElement(_Facts.Facts, { facts: facts })
+        _react2.default.createElement(_Facts.Facts, { facts: facts }),
+        links ? _react2.default.createElement(_Links.Links, { links: links }) : null
     );
 };
 
@@ -68420,6 +68445,97 @@ var styles = exports.styles = _aphrodite.StyleSheet.create({
         animationIterationCount: 'infinite',
         animationTimingFunction: 'linear'
     }
+});
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Links = undefined;
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _aphrodite = __webpack_require__(1);
+
+var _styles = __webpack_require__(79);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Links = exports.Links = function Links(_ref) {
+    var links = _ref.links;
+    return _react2.default.createElement(
+        'div',
+        { className: (0, _aphrodite.css)(_styles.styles.factsContainer) },
+        links.map(function (_ref2) {
+            var key = _ref2.key,
+                value = _ref2.value;
+            return _react2.default.createElement(
+                'div',
+                { key: key, className: (0, _aphrodite.css)(_styles.styles.fact) },
+                _react2.default.createElement(
+                    'p',
+                    { className: (0, _aphrodite.css)(_styles.styles.label) },
+                    key
+                ),
+                _react2.default.createElement(
+                    'p',
+                    { className: (0, _aphrodite.css)(_styles.styles.value) },
+                    _react2.default.createElement(
+                        'a',
+                        {
+                            href: value,
+                            target: '_blank'
+                        },
+                        value
+                    )
+                )
+            );
+        })
+    );
+};
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.styles = undefined;
+
+var _aphrodite = __webpack_require__(1);
+
+var styles = exports.styles = _aphrodite.StyleSheet.create({
+    factsContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around'
+    },
+
+    fact: {
+        flexBasis: '40%',
+        marginBottom: '3vh',
+        fontSize: '3vh'
+    },
+
+    label: {
+        fontWeight: 'bold',
+        fontSize: '0.8em'
+    },
+
+    value: {}
 });
 
 /***/ })

@@ -28,6 +28,7 @@ class FactSheet extends Component {
             status,
             facts,
             conservationFacts,
+            links,
         } = this.props;
 
         const {
@@ -58,6 +59,7 @@ class FactSheet extends Component {
                     toggle={() => this.handleToggleSheet('sheetOneVisible')}
                     visible={sheetOneVisible}
                     facts={facts}
+                    links={links}
                 />
             </div>
         );

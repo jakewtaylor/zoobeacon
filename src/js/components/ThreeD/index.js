@@ -57,13 +57,29 @@ class ThreeD extends Component {
 
 
     loadElephant () {
-        const loader = new Three.ObjectLoader();
-        loader.load('./elephant2.json', (obj) => {
-            obj.scale.set(0.4, 0.4, 0.4);
-            obj.position.y += 1;
-            this.animal = obj;
-            this.scene.add(this.animal);
-        });
+        const loader = new Three.JSONLoader();
+
+        const colors = {
+            body: 0x7a7a7a,
+            eyes: 0x0000ff,
+            tusks: 0xffffff,
+        };
+
+        const renderer = type => (geometry, materials) => {
+            const material = new Three.MultiMaterial(materials);
+            const mesh = new Three.Mesh(geometry, material);
+            mesh.scale.set(0.4, 0.4, 0.4);
+            mesh.position.y += 1;
+            mesh.material[0].color.set(colors[type]);
+            mesh.material[0].shininess = 0;
+            this[type] = mesh;
+            this.scene.add(this[type]);
+        }
+
+        loader.load('./elephant/body.json', renderer('body'));
+        loader.load('./elephant/eyes.json', renderer('eyes'));
+        loader.load('./elephant/tusks.json', renderer('tusks'));
+
     }
 
     renderElephant = (geometry, materials) => {
@@ -96,8 +112,10 @@ class ThreeD extends Component {
 
     animate = () => {
         requestAnimationFrame(this.animate);
-        if (this.animal) {
-            this.animal.rotation.y += 0.01;
+        if (this.body && this.eyes && this.tusks) {
+            this.body.rotation.y += 0.01;
+            this.eyes.rotation.y += 0.01;
+            this.tusks.rotation.y += 0.01;
         }
         this.renderer.render(this.scene, this.camera);
     }

@@ -15,7 +15,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "path": "^0.12.7",
-    "webpack": "^3.6.0"
+    "webpack": "^5.39.1"
   },
   "dependencies": {
     "aphrodite": "^1.2.4",
